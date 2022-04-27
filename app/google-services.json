@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "136874881629",
+    "project_id": "auth-bd4bb",
+    "storage_bucket": "auth-bd4bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136874881629:android:9240bf014e00deeb6393b4",
+        "android_client_info": {
+          "package_name": "com.cookandroid.auth_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136874881629-lbren0e2sh7ejqf8tbgn3m927mi1putn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqDaQhKA7_Oe71eesGCA-XtGWcmldaWYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136874881629-lbren0e2sh7ejqf8tbgn3m927mi1putn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
