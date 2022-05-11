@@ -24,7 +24,7 @@ public class ListViewAdapter extends ArrayAdapter<ListData> {
     public View getView(int position, View convertView, ViewGroup parent) {
         ListData data = (ListData)getItem(position);
         if (null == convertView) {
-            convertView = layoutInflater.inflate(R.layout.activity_previous_receipt_view, null);
+            convertView = layoutInflater.inflate(R.layout.receipt_list, null);
         }
 
         TextView barcodeText;

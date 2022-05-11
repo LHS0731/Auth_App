@@ -1,19 +1,10 @@
 package com.cookandroid.auth_app;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
-
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class PreviousReceiptView extends AppCompatActivity {
 
@@ -22,8 +13,12 @@ public class PreviousReceiptView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_previous_receipt_view);
 
+        Intent intent = getIntent();
+        String whatfiles_view = intent.getStringExtra("key");
+
         CsvReader parser = new CsvReader();
-        parser.reader(getApplicationContext());
+        parser.reader(getApplicationContext(),whatfiles_view);
+
         ListViewAdapter listViewAdapter = new ListViewAdapter(this, 0, parser.objects);
         ListView listView = (ListView)findViewById(R.id.list);
         listView.setAdapter(listViewAdapter);

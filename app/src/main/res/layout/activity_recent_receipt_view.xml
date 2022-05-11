@@ -1,49 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RecentReceiptView">
 
-    <TextView
-        android:id="@+id/recentReceipt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="최근영수증"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="italic"
-        tools:layout_editor_absoluteX="164dp"
-        tools:layout_editor_absoluteY="35dp"
-        tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/view_Receipt"
+    <ListView
+        android:id="@+id/filelist"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text=""
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="italic"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="99dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/button_Receipt"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="492dp"
-        android:backgroundTint="#0ED6B9"
-        android:text="영수증 보기"
-        android:textColor="#ffffff"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recentReceipt" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

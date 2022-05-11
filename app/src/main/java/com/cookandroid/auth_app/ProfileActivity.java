@@ -25,7 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private String userID;
 
-    private Button logout, PWreset, useCart, RecentReceipt, PreviosReceipt;
+    private Button logout, PWreset, useCart, RecentReceipt, Qrpay;
 
 
     @Override
@@ -62,11 +62,11 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(new Intent(ProfileActivity.this, RecentReceiptView.class));
             }
         });
-        PreviosReceipt = (Button) findViewById(R.id.previousReceipt);
-        PreviosReceipt.setOnClickListener(new View.OnClickListener() {
+        Qrpay = (Button) findViewById(R.id.Qrpay);
+        Qrpay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ProfileActivity.this, PreviousReceiptView.class));
+                startActivity(new Intent(ProfileActivity.this, QRpay_Activity.class));
             }
         });
 

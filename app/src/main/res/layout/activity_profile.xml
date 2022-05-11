@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="340dp"
         android:backgroundTint="#0ED6B9"
-        android:text="최근구매"
+        android:text="영수증"
         android:textColor="#ffff"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -127,12 +127,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/previousReceipt"
+        android:id="@+id/Qrpay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="340dp"
         android:backgroundTint="#0ED6B9"
-        android:text="구매내역"
+        android:text="결제하기"
         android:textColor="#ffff"
         android:textSize="20sp"
         android:textStyle="bold"
