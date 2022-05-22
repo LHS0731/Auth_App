@@ -1,19 +1,11 @@
 package com.cookandroid.auth_app;
 
 public class ListData {
-    String barcode;
     String name;
     String price;
     String EA;
     String amount;
 
-    public void setbarcode(String barcode){
-        this.barcode = barcode;
-    }
-
-    public String getbarcode(){
-        return barcode;
-    }
 
     public void setname(String name){
         this.name = name;

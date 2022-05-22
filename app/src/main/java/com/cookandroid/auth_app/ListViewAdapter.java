@@ -27,19 +27,16 @@ public class ListViewAdapter extends ArrayAdapter<ListData> {
             convertView = layoutInflater.inflate(R.layout.receipt_list, null);
         }
 
-        TextView barcodeText;
         TextView nameText;
         TextView priceText;
         TextView EAText;
         TextView amountText;
 
-        barcodeText = (TextView)convertView.findViewById(R.id.barcode);
         nameText = (TextView)convertView.findViewById(R.id.name);
         priceText = (TextView)convertView.findViewById(R.id.price);
         EAText = (TextView)convertView.findViewById(R.id.EA);
         amountText = (TextView)convertView.findViewById(R.id.amount);
 
-        barcodeText.setText(data.getbarcode());
         nameText.setText(data.getname());
         priceText.setText(data.getprice());
         EAText.setText(data.getEA());

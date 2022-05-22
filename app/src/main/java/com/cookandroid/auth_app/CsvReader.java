@@ -29,11 +29,10 @@ public class CsvReader implements Serializable {
                 String[] RowData = line.split(",");
 
                 //
-                data.setbarcode(RowData[0]);
-                data.setname(RowData[1]);
-                data.setprice(RowData[2]);
-                data.setEA(RowData[3]);
-                data.setamount(RowData[4]);
+                data.setname(RowData[0]);
+                data.setprice(RowData[1]);
+                data.setEA(RowData[2]);
+                data.setamount(RowData[3]);
 
                 objects.add(data);
             }

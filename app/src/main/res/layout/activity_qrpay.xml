@@ -26,16 +26,4 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"/>
 
-    <Button
-        android:id="@+id/get_receipt"
-        android:text="영수증 받아오기"
-        android:backgroundTint="#0ED6B9"
-        android:textColor="#ffff"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"/>
-
 </LinearLayout>

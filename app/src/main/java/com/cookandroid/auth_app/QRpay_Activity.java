@@ -1,11 +1,11 @@
 package com.cookandroid.auth_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class QRpay_Activity extends AppCompatActivity {
 
@@ -21,14 +21,6 @@ public class QRpay_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(QRpay_Activity.this, QRscanActivity.class));
-            }
-        });
-
-        btn_get_receipt = (Button) findViewById(R.id.get_receipt);
-        btn_get_receipt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(QRpay_Activity.this, GetreceiptActivity.class));
             }
         });
 
