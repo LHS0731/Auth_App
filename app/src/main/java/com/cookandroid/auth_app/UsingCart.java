@@ -173,7 +173,7 @@ public class UsingCart extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             switch(action){
-                //블루투스 디바이스 검색 종료
+                //블루투스 디바이스 검색
                 case BluetoothAdapter.ACTION_DISCOVERY_STARTED:
                     dataDevice.clear();
                     bluetoothDevices.clear();
@@ -186,11 +186,17 @@ public class UsingCart extends AppCompatActivity {
                     //데이터 저장
                     Map map = new HashMap();
 
-//                    if(device.getName().contains("효건")) {
+//                    String mapname1 = device.getName();
+//                    if(mapname1.contains("Air")) {
+//                        map.put("name", device.getName()); //device.getName() : 블루투스 디바이스의 이름
+//                        map.put("address", device.getAddress()); //device.getAddress() : 블루투스 디바이스의 MAC 주소
+//                        dataDevice.add(map);
 //                    }
+
                     map.put("name", device.getName()); //device.getName() : 블루투스 디바이스의 이름
                     map.put("address", device.getAddress()); //device.getAddress() : 블루투스 디바이스의 MAC 주소
                     dataDevice.add(map);
+                   
                     //리스트 목록갱신
                     adapterDevice.notifyDataSetChanged();
 
@@ -208,6 +214,8 @@ public class UsingCart extends AppCompatActivity {
                     if(paired.getBondState()==BluetoothDevice.BOND_BONDED){
                         //데이터 저장
                         Map map2 = new HashMap();
+
+
                         map2.put("name", paired.getName()); //device.getName() : 블루투스 디바이스의 이름
                         map2.put("address", paired.getAddress()); //device.getAddress() : 블루투스 디바이스의 MAC 주소
                         dataPaired.add(map2);

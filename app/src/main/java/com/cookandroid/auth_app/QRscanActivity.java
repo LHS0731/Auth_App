@@ -77,6 +77,19 @@ public class QRscanActivity extends AppCompatActivity {
                     fullNameTextView.setText(fullName);
                     emailTextView.setText(email);
                     ageTextView.setText(age);
+
+                    btn_get_receipt = (Button) findViewById(R.id.get_receipt);
+                    btn_get_receipt.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            //startActivity(new Intent(QRscanActivity.this, GetreceiptActivity.class));
+
+
+                            Intent myyintent = new Intent(QRscanActivity.this, GetreceiptActivity.class);
+                            myyintent.putExtra("key_email",email);
+                            QRscanActivity.this.startActivity(myyintent);
+                        }
+                    });
                 }
             }
 
@@ -87,13 +100,13 @@ public class QRscanActivity extends AppCompatActivity {
             }
         });
 
-        btn_get_receipt = (Button) findViewById(R.id.get_receipt);
-        btn_get_receipt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(QRscanActivity.this, GetreceiptActivity.class));
-            }
-        });
+//        btn_get_receipt = (Button) findViewById(R.id.get_receipt);
+//        btn_get_receipt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(QRscanActivity.this, GetreceiptActivity.class));
+//            }
+//        });
 
     }
 }
