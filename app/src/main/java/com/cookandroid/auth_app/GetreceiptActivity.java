@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -24,6 +25,7 @@ public class GetreceiptActivity extends AppCompatActivity {
     StorageReference ref;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,23 +36,27 @@ public class GetreceiptActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 download();
+                downloadall();
             }
         });
     }
 
     public void download(){
+        Intent intent = getIntent();
+        String whatemail_view = intent.getStringExtra("key_email");
 
         storageReference=firebaseStorage.getInstance().getReference();
-        ref=storageReference.child("abcd.csv");
+        ref=storageReference.child(whatemail_view+"/shopping.csv");
+        Log.d("newlog",whatemail_view+"/shopping.csv");
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
 
-                Intent intent = getIntent();
-                String whatemail_view = intent.getStringExtra("key_email");
+//                Intent intent = getIntent();
+//                String whatemail_view = intent.getStringExtra("key_email");
 
                 String url = uri.toString();
-                downloadFiles(GetreceiptActivity.this, "abcd", ".csv", "/"+whatemail_view, url);
+                downloadFiles(GetreceiptActivity.this, "shopping2", ".csv", "/"+whatemail_view, url);
                 //downloadFiles(GetreceiptActivity.this, "abcd", ".csv", "/gustjq2536@gmail.com", url);
                 //downloadFiles(GetreceiptActivity.this, "abcd", "csv", DIRECTORY_DOWNLOADS, url);
             }
@@ -60,7 +66,12 @@ public class GetreceiptActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void downloadall(){
+        Intent intent = getIntent();
+        String whatemail_view = intent.getStringExtra("key_email");
 
+        storageReference listRef = storage.getReference().
     }
     public void downloadFiles(Context context, String fileName, String fileExtension, String destinationDirectory, String url){
         DownloadManager downloadManager = (DownloadManager) context.

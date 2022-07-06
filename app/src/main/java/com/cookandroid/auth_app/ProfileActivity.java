@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +19,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 
@@ -27,6 +32,8 @@ public class ProfileActivity extends AppCompatActivity {
     private String userID;
 
     private Button logout, PWreset, useCart, RecentReceipt, Qrpay;
+
+    StorageReference storagereference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +80,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
+        storagereference = FirebaseStorage.getInstance().getReference();
         userID = user.getUid();
 
         final TextView greetingtTextView = (TextView) findViewById(R.id.greeting);
@@ -95,12 +103,32 @@ public class ProfileActivity extends AppCompatActivity {
                     emailTextView.setText(email);
                     ageTextView.setText(age);
 
-                    File myDir = new File(getFilesDir(), email);
+                    File myDir = new File("/sdcard/Android/data/com.cookandroid.auth_app/files/"+email);
                     // 내부 files 폴더내 이메일로된 폴더가 만들어졌는지 체크, 로그인한 이메일로된 폴더 없을시 생성 ======
-                    myDir.mkdir();
-                    if(!myDir.exists())
-                        myDir.mkdirs();
-                    // 폴더가 제대로 만들어졌는지 체크 ======
+
+                    // 해당 디렉토리가 없을경우 디렉토리를 생성합니다.
+                    if (!myDir.exists()) {
+                        try{
+                            myDir.mkdir(); //폴더 생성합니다.
+                            System.out.println("폴더가 생성되었습니다.");
+                        }
+                        catch(Exception e){
+                            e.getStackTrace();
+                        }
+                    }else {
+                        System.out.println("이미 폴더가 생성되어 있습니다.");
+                    }
+
+                    String data = "check csv files for a user!";
+                    storagereference.child(email+"/file.txt").putBytes(data.getBytes()).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                        }
+                    });
                 }
             }
 

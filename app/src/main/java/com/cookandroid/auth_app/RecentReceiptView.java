@@ -54,7 +54,6 @@ public class RecentReceiptView extends AppCompatActivity {
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("tiger","1111");
                 User userProfile = snapshot.getValue(User.class);
                 if(userProfile != null){
                     String email = userProfile.email;
@@ -65,9 +64,6 @@ public class RecentReceiptView extends AppCompatActivity {
                     files = myspace.list();
 
 
-                    Log.d("tiger",files.toString());
-                    // download/gustjq2536@gmail.com에 있는 파일들 files 배열로 저장
-                    Log.d("tiger","2222");
                     for(int i=0; i<files.length; i++){
                         //Log.d("TestActivity", files[i]);
                     }
