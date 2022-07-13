@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -36,7 +35,7 @@ public class GetreceiptActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 download();
-                downloadall();
+                //downloadall();
             }
         });
     }
@@ -47,7 +46,6 @@ public class GetreceiptActivity extends AppCompatActivity {
 
         storageReference=firebaseStorage.getInstance().getReference();
         ref=storageReference.child(whatemail_view+"/shopping.csv");
-        Log.d("newlog",whatemail_view+"/shopping.csv");
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -71,7 +69,6 @@ public class GetreceiptActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String whatemail_view = intent.getStringExtra("key_email");
 
-        storageReference listRef = storage.getReference().
     }
     public void downloadFiles(Context context, String fileName, String fileExtension, String destinationDirectory, String url){
         DownloadManager downloadManager = (DownloadManager) context.

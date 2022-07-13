@@ -52,24 +52,27 @@ public class UsingCart extends AppCompatActivity {
     List<BluetoothDevice> bluetoothDevices;
     int selectDevice;
 
+    // Logcat Tag
+    private String TAG = "Bluetooth Found";
+
 
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_using_cart);
+        setContentView(R.layout.activity_main);
 
         //UI
         txtState = (TextView)findViewById(R.id.txtState);
         chkFindme = (CheckBox)findViewById(R.id.chkFindme);
         btnSearch = (Button)findViewById(R.id.btnSearch);
-//        listPaired = (ListView)findViewById(R.id.listPaired);
+        listPaired = (ListView)findViewById(R.id.listPaired);
         listDevice = (ListView)findViewById(R.id.listDevice);
 
         //Adapter1
         dataPaired = new ArrayList<>();
         adapterPaired = new SimpleAdapter(this, dataPaired, android.R.layout.simple_list_item_2, new String[]{"name","address"}, new int[]{android.R.id.text1, android.R.id.text2});
-//        listPaired.setAdapter(adapterPaired);
+        listPaired.setAdapter(adapterPaired);
         //Adapter2
         dataDevice = new ArrayList<>();
         adapterDevice = new SimpleAdapter(this, dataDevice, android.R.layout.simple_list_item_2, new String[]{"name","address"}, new int[]{android.R.id.text1, android.R.id.text2});
@@ -173,7 +176,7 @@ public class UsingCart extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             switch(action){
-                //블루투스 디바이스 검색
+                //블루투스 디바이스 검색 종료
                 case BluetoothAdapter.ACTION_DISCOVERY_STARTED:
                     dataDevice.clear();
                     bluetoothDevices.clear();
@@ -183,20 +186,21 @@ public class UsingCart extends AppCompatActivity {
                 case BluetoothDevice.ACTION_FOUND:
                     //검색한 블루투스 디바이스의 객체를 구한다
                     BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+
+//                    if(device.getName() == null){
+//                        Log.d(TAG, "GET NAME FAIL");
+//                        break;
+//                    }
+
                     //데이터 저장
                     Map map = new HashMap();
 
-//                    String mapname1 = device.getName();
-//                    if(mapname1.contains("Air")) {
-//                        map.put("name", device.getName()); //device.getName() : 블루투스 디바이스의 이름
-//                        map.put("address", device.getAddress()); //device.getAddress() : 블루투스 디바이스의 MAC 주소
-//                        dataDevice.add(map);
-//                    }
-
                     map.put("name", device.getName()); //device.getName() : 블루투스 디바이스의 이름
                     map.put("address", device.getAddress()); //device.getAddress() : 블루투스 디바이스의 MAC 주소
+                    // Log.d(TAG, "GET NAME SUCCESS");
+                    // Log.d(TAG, device.getName());
+
                     dataDevice.add(map);
-                   
                     //리스트 목록갱신
                     adapterDevice.notifyDataSetChanged();
 
@@ -214,8 +218,6 @@ public class UsingCart extends AppCompatActivity {
                     if(paired.getBondState()==BluetoothDevice.BOND_BONDED){
                         //데이터 저장
                         Map map2 = new HashMap();
-
-
                         map2.put("name", paired.getName()); //device.getName() : 블루투스 디바이스의 이름
                         map2.put("address", paired.getAddress()); //device.getAddress() : 블루투스 디바이스의 MAC 주소
                         dataPaired.add(map2);

@@ -110,17 +110,17 @@ public class ProfileActivity extends AppCompatActivity {
                     if (!myDir.exists()) {
                         try{
                             myDir.mkdir(); //폴더 생성합니다.
-                            System.out.println("폴더가 생성되었습니다.");
                         }
                         catch(Exception e){
                             e.getStackTrace();
                         }
                     }else {
-                        System.out.println("이미 폴더가 생성되어 있습니다.");
                     }
 
                     String data = "check csv files for a user!";
+                    // 디렉토리를 스토리지 내에 생성하기 위해 임시 txt파일을 생성해줘야 한다.
                     storagereference.child(email+"/file.txt").putBytes(data.getBytes()).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        // 스토리지 내 이메일로된 폴더내에 txt파일을 저장시킨다.
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         }
